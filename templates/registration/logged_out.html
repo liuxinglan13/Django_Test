@@ -1,0 +1,7 @@
+{% extends "account/base.html" %}
+{% block title %}登出{% endblock %}
+{% block content %}
+  <h1>Logged out</h1>
+  <p>你已成功退出登陆，你可以 <a href="{% url "login" %}">重新登陆</a>.</p>
+{% endblock %}
+
