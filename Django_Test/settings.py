@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'app',
     'taggit',
     'account',
+    'images',
 ]
 
 SITE_ID = 1
@@ -56,6 +57,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# 自定义认证后台相关--用邮箱地址加密码也能认证
+AUTHENTICATION_BACKENDS = (
+   'django.contrib.auth.backends.ModelBackend',
+   'account.authentication.EmailAuthBackend',
+)
 
 ROOT_URLCONF = 'Django_Test.urls'
 
@@ -132,3 +139,6 @@ LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

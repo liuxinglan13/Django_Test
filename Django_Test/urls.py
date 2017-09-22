@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from app.sitemaps import PostSitemap
+from django.conf import settings
+from django.conf.urls.static import static
 
 sitemaps = {
     'posts': PostSitemap,
@@ -28,4 +30,9 @@ urlpatterns = [
     url(r'^account/',include('account.urls')),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^images/', include('images.urls', namespace='images')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
