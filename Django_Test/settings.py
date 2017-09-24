@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'taggit',
     'account',
     'images',
+    'sorl.thumbnail',
 ]
 
 SITE_ID = 1
@@ -142,3 +143,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+TEMPLATE_DEBUG = True
+THUMBNAIL_DEBUG = True
